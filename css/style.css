@@ -80,8 +80,28 @@ body {
 
 #sidebar-close {
   font-size: 36px;
+  padding: 4px;
   position: absolute;
   cursor: pointer;
   top:20px;
   left: -60px;
+}
+
+#sidebar-close ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sidebar-close li {
+  width: 28px;
+  height: 4px;
+  background-color: black;
+  margin: 6px;
+}
+
+#sidebar-close:hover {
+  text-shadow: 0 0 5px #999;
+  -webkit-text-shadow: 0 0 5px #999;
+  outline: 2px solid rgba(0,0,0,0.1);
 }
