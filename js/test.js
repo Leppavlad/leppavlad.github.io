@@ -1,4 +1,4 @@
-var mymap = L.map('mapid').setView([34.76, 113.65], 13);
+var map = L.map('mapid').setView([34.76, 113.65], 13);
 const sidebar = document.getElementById('sidebar');
 const sidebarClose = document.getElementById('sidebarClose');
 const title = document.getElementById('place-title');
@@ -14,9 +14,9 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   tileSize: 512,
   zoomOffset: -1,
   accessToken: 'pk.eyJ1IjoibGVwcGF2bGFkIiwiYSI6ImNrZGhwMHBzYjFodnYycG5yNWFveDRsMmIifQ.h1hfsyJpO5jf4WGnAs04qg'
-}).addTo(mymap);
+}).addTo(map);
 // Делает карту кликабельной.
-mymap.on('click', onMapClick);
+map.on('click', onMapClick);
 
 // Сайдбар
   title.innerHTML = 'Место';
@@ -30,15 +30,32 @@ var circle = L.circle([34.765, 113.655], {
   fillColor: '#f03',
   fillOpacity: 0.5,
   radius: 100
-}).addTo(mymap);
+}).addTo(map);
 
 // Окно при нажатии точки на карте
 circle.bindPopup("I am a circle.");
 circle.on('click', function () { popSidebar(); })
 
+// Группа для маркера
+var markerGroup = L.layerGroup().addTo(map);
+var marker = null;
+var markerPos = null;
 // Клик на карте создаёт маркер
-var markerGroup = L.layerGroup().addTo(mymap);
 function onMapClick(e) {
   markerGroup.clearLayers();
-  var marker = L.marker(e.latlng).addTo(markerGroup);
+  markerPos = e.latlng;
+  marker = L.marker(markerPos).addTo(markerGroup);
+}
+
+// Группа для мест
+const placesGroup = L.layerGroup().addTo(map)
+// Создаёт место на основе маркера
+function newPlace() {
+  var place = L.circle(markerPos, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 100
+  }).addTo(placesGroup);
+  markerGroup.clearLayers();
 }
