@@ -1,8 +1,10 @@
 var mymap = L.map('mapid').setView([34.76, 113.65], 13);
 const sidebar = document.getElementById('sidebar');
+const sidebarClose = document.getElementById('sidebarClose');
 const title = document.getElementById('place-title');
 const coordinates = document.getElementById('coordinates');
-const description = document.getElementsByClassName('description');
+const description = document.getElementsByClassName('description-text');
+// const marker;
 
 // Инициализация карты
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -13,24 +15,17 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   zoomOffset: -1,
   accessToken: 'pk.eyJ1IjoibGVwcGF2bGFkIiwiYSI6ImNrZGhwMHBzYjFodnYycG5yNWFveDRsMmIifQ.h1hfsyJpO5jf4WGnAs04qg'
 }).addTo(mymap);
+// Делает карту кликабельной.
+mymap.on('click', onMapClick);
 
-// Вызов сайдбара
-function popSidebar() {
-  sidebar.style.width = '367px';
-  sidebar.style.padding = '20px';
-  title.innerHTML = 'Name of the place';
-  coordinates.innerHTML = 'x, y';
-  description[0].innerHTML = 'And its description';
-}
-
-// Сокрытие сайдбара
-function hideSidebar() {
-  sidebar.style.width = '0';
-  sidebar.style.padding = '20px 0px';
-}
+// Сайдбар
+  title.innerHTML = 'Место';
+  coordinates.innerHTML = 'Координаты x, y';
+  description[0].innerHTML = 'Выберите место на карте, чтобы узнать его описание';
+  description[1].innerHTML = '<img src="https://picsum.photos/600/200">';
 
 // Точка на карте
-var circle = L.circle([34.765, 113.705], {
+var circle = L.circle([34.765, 113.655], {
   color: 'red',
   fillColor: '#f03',
   fillOpacity: 0.5,
@@ -41,18 +36,9 @@ var circle = L.circle([34.765, 113.705], {
 circle.bindPopup("I am a circle.");
 circle.on('click', function () { popSidebar(); })
 
-// Клик на карте создаёт точку
-// function onMapClick(e) {
-//   var circle = L.circle(e.latlng, {
-//     color: 'red',
-//     fillColor: '#f03',
-//     fillOpacity: 0.5,
-//     radius: 100
-//   }).addTo(mymap);
-  // И вызывает сайдбар
-//   popSidebar();
-// }
-
-// Делает карту кликабельной. 
-// Строка должна быть в конце документа
-mymap.on('click', onMapClick);
+// Клик на карте создаёт маркер
+var markerGroup = L.layerGroup().addTo(mymap);
+function onMapClick(e) {
+  markerGroup.clearLayers();
+  var marker = L.marker(e.latlng).addTo(markerGroup);
+}
