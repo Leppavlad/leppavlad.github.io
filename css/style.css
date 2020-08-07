@@ -18,6 +18,7 @@ body {
 
 #sidebar {
   box-sizing: border-box;
+  box-shadow: 0 -10px 15px black;
 
   display: flex;
   flex-direction: column;
@@ -75,7 +76,12 @@ body {
   background-color: #4747e2;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+}
+
+.button:hover {
+  border: 2px solid black;
+  opacity: 0.9;
 }
 
 #sidebar-close {

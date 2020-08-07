@@ -42,6 +42,7 @@ function closeSidebar() {
 // Слой  маркера
 let marker = null;
 let markerPos = null;
+
 const markerGroup = L.layerGroup().addTo(map);
 
 // Слой заведений
@@ -59,7 +60,11 @@ let circleOptions = {
 };
 
 let markerOptions = {
-  title: ''
+  title: '',
+  draggable: true,
+  title: "Resource location",
+  alt: "Resource Location",
+  riseOnHover: true
 };
 /*========================================== */
 
@@ -68,11 +73,18 @@ function onMapClick(e) {
   markerGroup.clearLayers();
   markerPos = e.latlng;
   marker = L.marker(markerPos, markerOptions).addTo(markerGroup);
+  marker.bindTooltip(e.latlng.toString()).openPopup();
+
+  marker.on("dragend", function (ev) {
+    let changedPos = ev.target.getLatLng();
+    this.bindPopup(chagedPos.toString()).openPopup();
+  });
 }
 
 // Создаёт место на основе маркера
 function newPlace() {
   var place = L.circleMarker(markerPos, circleOptions).addTo(placesGroup);
+  place.bindPopup(title.innerHTML);
   places.push({'id': places.length, 'lat': markerPos.lat, 'lng': markerPos.lng});
   console.log(places);
   // Убираем маркер
@@ -84,5 +96,5 @@ function newPlace() {
 var circle = L.circleMarker([34.765, 113.655], circleOptions).addTo(placesGroup);
 // console.log(places)
 // Окно при нажатии точки на карте
-circle.bindPopup("I am a circle.");
+circle.bindPopup(title.innerHTML);
 // circle.on('click', alert('Gosh'));
