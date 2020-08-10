@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+}
+
+#place-title {
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+#place-coordinates {
+  font-size: 12px;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+#place-description img {
+  width: 96%;
+  height: auto;
+}
