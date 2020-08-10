@@ -1,3 +1,9 @@
+// Массив мест
+const places = [];
+// Слой заведений
+const placesGroup = L.layerGroup(places).addTo(map);
+/*========================================== */
+
 // Создаёт место на основе маркера
 function newPlace(pos = markerPos, layer = placesGroup) {
   // Создание элемента и запись его в массив
@@ -20,12 +26,6 @@ function newPlace(pos = markerPos, layer = placesGroup) {
 
   return place;
 }
-/*========================================== */
-
-// Массив мест
-const places = [];
-// Слой заведений
-const placesGroup = L.layerGroup(places).addTo(map);
 /*========================================== */
 
 // Существующие точки на карте
