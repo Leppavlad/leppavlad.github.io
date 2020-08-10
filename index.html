@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
-  <link rel="stylesheet" href="css/fontawesome/all.min.css">
-  <script src="js/fontawesome/all.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -18,16 +16,7 @@
       <div id="sidebar-close" onclick="toggleSidebar()">
         <ul><li></li><li></li><li></li></ul>
       </div>
-      <div class="place-description">
-        <h2 id="place-title"></h2>
-        <p id="coordinates"></p>
-        <p class="description-text"></p>
-        <p class="description-text"></p>
-        <p class="description-text"></p>
-        <p class="description-text"></p>
-        <p class="description-text"></p>
-        <p class="description-text"></p>
-      </div>
+      <iframe src="places/Dongcheng.html" id="place-container" frameborder="0"></iframe>
       <button class="button create-place" onclick="newPlace()">Создать заведение</button>
     </aside>
   </div>

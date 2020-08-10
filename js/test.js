@@ -14,15 +14,15 @@ map.on('click', onMapClick);
 /*========================================== */
 
 // Сайдбар
-const sidebar = document.getElementById('sidebar');
-const sidebarClose = document.getElementById('sidebarClose');
-const title = document.getElementById('place-title');
-const coordinates = document.getElementById('coordinates');
-const description = document.getElementsByClassName('description-text');
+// const sidebar = document.getElementById('sidebar');
+// const sidebarClose = document.getElementById('sidebarClose');
+// const title = document.getElementById('place-title');
+// const coordinates = document.getElementById('coordinates');
+// const description = document.getElementsByClassName('description-text');
 
-title.innerHTML = 'Место';
-coordinates.innerHTML = 'Координаты x, y';
-description[0].innerHTML = 'Выберите место на карте, чтобы узнать его описание';
+// title.innerHTML = 'Место';
+// coordinates.innerHTML = 'Координаты x, y';
+// description[0].innerHTML = 'Выберите место на карте, чтобы узнать его описание';
 // description[1].innerHTML = '<img src="https://picsum.photos/600/200">';
 
 // Функции сайдбара
@@ -96,5 +96,5 @@ function newPlace() {
 var circle = L.circleMarker([34.765, 113.655], circleOptions).addTo(placesGroup);
 // console.log(places)
 // Окно при нажатии точки на карте
-circle.bindPopup(title.innerHTML);
+circle.bindPopup("   <br><a href='http://гуляй-душа.рф'>Идите в п...</a>");
 // circle.on('click', alert('Gosh'));
