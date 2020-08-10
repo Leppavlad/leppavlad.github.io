@@ -1,5 +1,4 @@
 body {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
 }
 
@@ -15,18 +14,18 @@ body {
 
 #sidebar {
   box-sizing: border-box;
-  box-shadow: 0 -10px 15px black;
+  box-shadow: 0 0px 15px rgba(0,0,0,0.5);
 
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   
   position: fixed;
   z-index: 100;
-  top: 0;
-  right: 0;
+  top: 3px;
+  right: 0px;
 
   width: 0px;
-  height: calc(100vh - 16px);
+  height: calc(100vh - 20px);
   padding-top: 15px;
 
   background-color: white;
@@ -75,8 +74,8 @@ body {
 
 .button {
   position: absolute;
-  /* flex: 1; */
   bottom: 10px;
+  left: 15px;
 
   height: 40px;
   width: calc(100% - 30px);
