@@ -20,7 +20,6 @@ function newPlace(pos = markerPos, layer = placesGroup) {
   place.on('click', function () {
     sidebarOpen();
     markerGroup.clearLayers();
-    // console.log(place.id);
     placeContainer.src = `../places/${place.id}.html`;
   })
 
@@ -30,3 +29,4 @@ function newPlace(pos = markerPos, layer = placesGroup) {
 
 // Существующие точки на карте
 var circle = newPlace([34.7460, 113.6759]);
+var circle = newPlace([34.758256, 113.653258]);
