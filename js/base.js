@@ -16,8 +16,8 @@ map.on('click', onMapClick);
 
 // Сайдбар
 const sidebar = document.getElementById('sidebar');
-const sidebarCloseBtn = document.getElementById('sidebarClose');
-const placeContainer = document.getElementById('place-container');
+const pageCreate = document.getElementById('page-create');
+const pageDescribe = document.getElementById('page-describe');
 
 // Функции сайдбара
 function sidebarToggle() {
@@ -31,11 +31,14 @@ function sidebarClose() {
   if (sidebar.classList.contains('opened'))
     sidebar.classList.remove('opened');
 }
+function changeWindow() {
+  pageCreate.classList.toggle('disabled');
+  pageDescribe.classList.toggle('disabled');
+}
 /*========================================== */
 
 // Слой для маркера
-let marker = null;
-let markerPos = null;
+let marker, markerPos;
 const markerGroup = L.layerGroup().addTo(map);
 /*========================================== */
 
@@ -45,15 +48,14 @@ let circleOptions = {
   fillColor: '#f03',
   fillOpacity: 0.5,
   radius: 5,
-  title: 'My Location',
+  // title: 'My Location',
   clickable: true
 };
 
 let markerOptions = {
-  title: '',
   draggable: true,
-  title: "Resource location",
-  alt: "Resource Location",
+  // title: "Resource location",
+  // alt: "Resource Location",
   riseOnHover: true
 };
 /*========================================== */

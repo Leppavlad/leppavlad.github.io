@@ -8,19 +8,75 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
+    <link rel="stylesheet" href="css/forms.css">
 </head>
 <body>
-  <div class="container">
-    <div id="mapid"></div>
-    <aside id="sidebar">
-      <div id="sidebar-close" onclick="sidebarToggle()">
-        <ul><li></li><li></li><li></li></ul>
-      </div>
-      <iframe id="place-container" src="" frameborder="0"></iframe>
-      <button class="button create-place" onclick="newPlace()">Создать заведение</button>
-    </aside>
+  <div id="mapid"></div>
+  <ul id="controls">
+    <li><img src="img/menu.png" id="sidebar-toggler" onclick="sidebarToggle()"></li>
+    <!-- <li><img src="img/describe.png" id="sidebar-page-describe" onclick="sidebarToggle()"></li> -->
+    <!-- <li><img src="img/create.png" id="sidebar-page-create" onclick="sidebarToggle()"></li> -->
   </div>
   
+  <aside id="sidebar" class="">
+      <div class="wrap-form">
+      <button id="changeWindow" onclick="changeWindow()">Change window</button>
+      <section id="page-create" class="disabled">
+        <h2>Create place</h2>
+        <form action="">
+          <label for="formCreateTitle">Title</label>
+          <input type="text" name="title" id="formCreateTitle" placeholder="Title of the place" required>
+
+          <label for="formCreateCategory">Category</label>
+          <select name="category" id="formCreateCategory" required>
+            <option value="" disabled selected hidden>Choose the category</option>
+            <option value="pub">Pub</option>
+            <option value="club">Club</option>
+            <option value="bar">Bar</option>
+            <!-- <option value="eatery">Eatery</option> -->
+          </select>
+
+          <label for="formCreateDescription">Description</label>
+          <textarea name="description" id="formCreateDescription" cols="30" rows="10" placeholder="Write short description"
+            required style="resize: none"></textarea>
+
+          <label for="formCreateAdress">Adress</label>
+          <input type="text" name="adress" id="formCreateAdress" placeholder="Write down full adress of the place" required>
+
+          <label for="formCreateTimeOpen">Opening hours</label>
+          <input type="time" name="open" id="formCreateTimeOpen" required>
+
+          <label for="formCreateTimeClose">Closing hours</label>
+          <input type="time" name="close" id="formCreateTimeClose" required>
+
+          <input type="submit" value="Send" onclick="newPlace()">
+        </form>
+      </section>
+      <section id="page-describe">
+        <h2 id="title">Title of the place</h2>
+        <div id="rating">Rating</div>
+        <div id="policeRate">Police rate</div>
+        <img src="https://picsum.photos/600/300" alt="">
+        <p id="description">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione tempora vero tempore ipsam eius.
+          Iste tempora cumque, saepe quia voluptates, sequi amet, natus maiores exercitationem provident neque perspiciatis
+          omnis laboriosam.
+        </p>
+        <div id="gallery">
+          <img src="https://picsum.photos/500/400" alt="">
+        </div>
+        <div id="averagePrice">Average price</div>
+        <div id="drinks">Drinks</div>
+        <div id="events">Events</div>
+        <div id="reviews">Reviews</div>
+        <button id="reviewWrite">Send review</button>
+      </section>
+    </div>
+
+    <!-- <iframe id="place-container" src="" frameborder="0"></iframe> -->
+    <!-- <button class="button create-place" onclick="newPlace()">Создать заведение</button> -->
+  </aside>
+
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
